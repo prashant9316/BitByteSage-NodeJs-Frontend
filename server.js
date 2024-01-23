@@ -20,17 +20,73 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Add this line
 
 
-app.get('/', (req, res) => {
-    res.send('index');
-});
-
+const resourcesRoutes = require('./routes/resources');
 // Define routes
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index');
 });
+
+app.get('/about-us', (req, res) => {
+    res.render('about-us');
+})
+
+app.get('/contact-us', (req, res) => {
+    res.render('contact-us');
+})
+
+app.get('/newsletter', (req, res) => {
+    res.render('newsletter-subscribe');
+})
+
+app.get('/privacy-policy', (req, res) => {
+    res.render('privacy-policy');
+})
+
+app.get('/support-center', (req, res) => {
+    res.render('support-center');
+})
+
+app.get('/partners-certificate', (req, res) => {
+    res.render('partners-certifications');
+})
+
+app.get('/services/caas', (req, res)=> {
+    res.render('services/caas')
+})
+
+app.get('/services/consulting', (req, res) => {
+    res.render('services/consulting');
+})
+
+app.get('/services/network-security', (req, res)=> {
+    res.render('services/network-security');
+})
+
+app.get('/services/managed-services', (req, res)=> {
+    res.render('services/managed-it-services');
+})
+
+app.get('/services/network', (req, res) => {
+    res.render('services/network');
+})
+
+app.get('/services/cloud-services', (req, res) => {
+    res.render('services/cloud-services')
+})
+
+app.get('/services/request-quotation', (req,res) => {
+    res.render('services/request-quote')
+})
+
+app.get('/services/unified-communications', (req, res) => {
+    res.render('services/unified-communications')
+})
+
+
+app.use('/resources', resourcesRoutes)
 
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Open the application: http://localhost:${port}`);
 });
